@@ -106,7 +106,6 @@
         android:background="@drawable/ic_login_btn"
         android:backgroundTint="#fff"
         android:hint="보호자 인증코드"
-        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:textSize="16sp" />
 

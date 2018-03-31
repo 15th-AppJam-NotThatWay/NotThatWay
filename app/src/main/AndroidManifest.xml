@@ -3,6 +3,8 @@
     package="rankhep.com.notthatway">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +27,7 @@
         </activity>
         <activity android:name=".protector.ProtectorMainActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".BlindnessActivity"></activity>
+        <activity android:name=".blindness.BlindnessActivity"></activity>
         <service
             android:name=".util.FirebaseMessagingService">
             <intent-filter>
@@ -38,6 +40,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".blindness.BlindnessService"/>
     </application>
 
 </manifest>

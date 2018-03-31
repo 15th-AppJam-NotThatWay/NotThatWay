@@ -3,6 +3,7 @@ package rankhep.com.notthatway.protector
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.iid.FirebaseInstanceId
@@ -20,9 +21,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.LatLng
+import kotlinx.android.synthetic.main.activity_protector_main.*
+import rankhep.com.notthatway.adapter.LogAdapter
+import rankhep.com.notthatway.model.LogModel
 
 
-class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback {
+class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback, LogAdapter.OnItemClickListener {
+    lateinit var mMap: GoogleMap
+    var items = ArrayList<LogModel>()
+    var mAdapter: LogAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_protector_main)
@@ -33,6 +40,10 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = fragmentManager
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
+        userToken.text = user?.usertoken
+        mAdapter = LogAdapter(items,this)
+        logList.adapter = mAdapter
+        getLog(user?.id!!)
     }
 
     private fun sendFcmToken(id: String?, token: String?) {
@@ -50,6 +61,20 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
+    fun getLog(id:String){
+        NetworkHelper.networkInstance.getList(id).enqueue(object :Callback<ArrayList<LogModel>>{
+            override fun onFailure(call: Call<ArrayList<LogModel>>?, t: Throwable?) {
+                Log.e("Error", t?.message)
+            }
+
+            override fun onResponse(call: Call<ArrayList<LogModel>>?, response: Response<ArrayList<LogModel>>?) {
+                items.clear()
+                items.addAll(response?.body()!!)
+                mAdapter?.notifyDataSetChanged()
+            }
+        })
+    }
+
     private fun test(token: String) {
         NetworkHelper.networkInstance.test(token).enqueue(object : Callback<StateCode> {
             override fun onFailure(call: Call<StateCode>?, t: Throwable?) {
@@ -63,13 +88,21 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
+        mMap = map
         val SEOUL = LatLng(37.56, 126.97)
         val markerOptions = MarkerOptions()
         markerOptions.position(SEOUL)
-        markerOptions.title("서울")
-        markerOptions.snippet("한국의 수도")
         map.addMarker(markerOptions)
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL))
         map.animateCamera(CameraUpdateFactory.zoomTo(10f))
+    }
+
+    override fun onItemClickListener(itemView: View, latitude: Double, longitude: Double) {
+        val location = LatLng(longitude, latitude)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+        val markerOptions = MarkerOptions()
+        markerOptions.position(location)
+        mMap.addMarker(markerOptions)
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(10f))
     }
 }

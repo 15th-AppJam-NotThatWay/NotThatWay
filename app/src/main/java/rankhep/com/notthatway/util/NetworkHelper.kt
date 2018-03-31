@@ -20,7 +20,7 @@ class NetworkHelper(private val context: Context) {
             get() {
                 if (retrofit == null) {
                     retrofit = Retrofit.Builder()
-                            .baseUrl(url + ":" + port)
+                            .baseUrl("http://soylatte.kr:3000")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
                 }

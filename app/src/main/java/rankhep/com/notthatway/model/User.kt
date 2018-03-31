@@ -9,6 +9,8 @@ class User(var username: String,
            var id: String,
            var password: String,
            var usertype: Boolean,
+           var usertoken:String,
+           var fcmtoken:String,
            var guardiantoken: String = ""):Serializable {
 }
 //username : body.username,

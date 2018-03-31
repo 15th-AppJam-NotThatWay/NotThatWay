@@ -1,6 +1,7 @@
 package rankhep.com.dhlwn.utils
 
 
+import rankhep.com.notthatway.model.LogModel
 import rankhep.com.notthatway.model.StateCode
 import rankhep.com.notthatway.model.User
 import retrofit2.Call
@@ -34,7 +35,17 @@ interface RetrofitInterface {
 
     @POST("/test")
     @FormUrlEncoded
-    fun test(@Field("fcmtoken") token:String): Call<StateCode>
+    fun test(@Field("fcmtoken") token: String): Call<StateCode>
+
+    @POST("/danger/push")
+    @FormUrlEncoded
+    fun sendPush(@Field("id") id: String,
+                 @Field("latitude") latitude: Double,
+                 @Field("longitude") longitude: Double): Call<StateCode>
+
+    @POST("/danger/list")
+    @FormUrlEncoded
+    fun getList(@Field("id") id: String): Call<ArrayList<LogModel>>
 //    일반유저 가입시
 //    username, id, password, type, guardiantoken(보호자 유저토큰)
 

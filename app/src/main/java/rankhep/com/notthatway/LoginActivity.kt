@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_login.*
 import rankhep.com.dhlwn.utils.NetworkHelper
+import rankhep.com.notthatway.blindness.BlindnessActivity
 import rankhep.com.notthatway.model.User
 import rankhep.com.notthatway.protector.ProtectorMainActivity
 import rankhep.com.notthatway.util.DataManager
@@ -34,13 +35,16 @@ class LoginActivity : AppCompatActivity() {
     private fun sendLoginData(id: String, pwd: String) {
         NetworkHelper.networkInstance.login(id, pwd).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>?) {
-                var user: User = response?.body()!!
-                DataManager(applicationContext).setUserData(user)
-                if (user.usertype)
-                    startActivity(Intent(applicationContext, ProtectorMainActivity::class.java))
-                else
-                    startActivity(Intent(applicationContext, BlindnessActivity::class.java))
-                finish()
+                if (response?.code() == 200) {
+                    var user: User = response?.body()!!
+
+                    DataManager(applicationContext).setUserData(user)
+                    if (user.usertype)
+                        startActivity(Intent(applicationContext, ProtectorMainActivity::class.java))
+                    else
+                        startActivity(Intent(applicationContext, BlindnessActivity::class.java))
+                    finish()
+                }
             }
 
             override fun onFailure(call: Call<User>?, t: Throwable?) {
