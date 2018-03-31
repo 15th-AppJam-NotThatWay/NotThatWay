@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:orientation="vertical"
+    tools:context="rankhep.com.notthatway.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#fff"
+        android:elevation="1dp"
+        android:translationZ="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="회원가입"
+            android:textColor="#8384B4"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/ic_login_btn"
+        android:backgroundTint="#fff"
+        android:hint="이름"
+        android:paddingLeft="20dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_login_btn"
+        android:backgroundTint="#fff"
+        android:hint="아이디"
+        android:paddingLeft="20dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_login_btn"
+        android:backgroundTint="#fff"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/protector"
+            android:layout_width="160dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_register_select"
+            android:backgroundTint="#8384B4"
+            android:gravity="center"
+            android:text="보호자"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/blindness"
+            android:layout_width="160dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_register_select"
+            android:gravity="center"
+            android:text="장애인"
+            android:textColor="#8384B4"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/checkCode"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_login_btn"
+        android:backgroundTint="#fff"
+        android:hint="보호자 인증코드"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/complete"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/ic_login_btn"
+        android:backgroundTint="#8384B4"
+        android:gravity="center"
+        android:text="회원가입 완료"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

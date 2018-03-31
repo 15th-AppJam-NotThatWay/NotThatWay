@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "337010657251",
+    "firebase_url": "https://th-appjam.firebaseio.com",
+    "project_id": "th-appjam",
+    "storage_bucket": "th-appjam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337010657251:android:536efd2461bd2509",
+        "android_client_info": {
+          "package_name": "rankhep.com.notthatway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337010657251-tcl0tevoqihdppfs0fallflok2e9n7r7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb6U2kYIyjtyYEkHeaw7gokUW2MiT-Qyg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
