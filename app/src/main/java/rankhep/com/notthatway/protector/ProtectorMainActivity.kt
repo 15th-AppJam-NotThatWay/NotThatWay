@@ -19,6 +19,8 @@ import java.net.NetworkInterface
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_protector_main.*
@@ -40,7 +42,7 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback, LogAdapte
         val mapFragment = fragmentManager
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
-        userToken.text = user?.usertoken
+        userToken.text = "보호자코드 : "+user?.usertoken
         mAdapter = LogAdapter(items,this)
         logList.adapter = mAdapter
         getLog(user?.id!!)
@@ -51,7 +53,6 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback, LogAdapte
             override fun onResponse(call: Call<StateCode>?, response: Response<StateCode>?) {
                 Toast.makeText(applicationContext, "Hi", Toast.LENGTH_SHORT).show()
                 Log.e("asdf", "asd: $id asdf: $token")
-                test(token)
             }
 
             override fun onFailure(call: Call<StateCode>?, t: Throwable?) {
@@ -92,9 +93,10 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback, LogAdapte
         val SEOUL = LatLng(37.56, 126.97)
         val markerOptions = MarkerOptions()
         markerOptions.position(SEOUL)
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.rsz_2rsz_ic_marker))
         map.addMarker(markerOptions)
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL))
-        map.animateCamera(CameraUpdateFactory.zoomTo(10f))
+        map.animateCamera(CameraUpdateFactory.zoomTo(15f))
     }
 
     override fun onItemClickListener(itemView: View, latitude: Double, longitude: Double) {
@@ -102,7 +104,8 @@ class ProtectorMainActivity : AppCompatActivity(), OnMapReadyCallback, LogAdapte
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
         val markerOptions = MarkerOptions()
         markerOptions.position(location)
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.rsz_2rsz_ic_marker))
         mMap.addMarker(markerOptions)
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10f))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
     }
 }

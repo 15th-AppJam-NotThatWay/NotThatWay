@@ -19,6 +19,7 @@
 
 
     <EditText
+        android:fontFamily="@font/notosanscjkkrbold"
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -36,6 +37,7 @@
 
 
     <EditText
+        android:fontFamily="@font/notosanscjkkrbold"
         android:id="@+id/pwd"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -51,6 +53,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:fontFamily="@font/notosanscjkkrbold"
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -67,6 +70,7 @@
 
     <Button
         android:id="@+id/register"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginHorizontal="16dp"

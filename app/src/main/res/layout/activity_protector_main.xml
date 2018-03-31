@@ -21,6 +21,7 @@
             android:src="@drawable/ic_logo" />
 
         <TextView
+            android:fontFamily="@font/notosanscjkkrregular"
             android:id="@+id/userToken"
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"

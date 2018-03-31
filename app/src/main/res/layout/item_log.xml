@@ -6,6 +6,7 @@
     android:layout_height="?attr/actionBarSize">
 
     <TextView
+        android:fontFamily="@font/notosanscjkkrregular"
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         app:layout_constraintLeft_toRightOf="@id/date" />
 
     <TextView
+        android:fontFamily="@font/notosanscjkkrregular"
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

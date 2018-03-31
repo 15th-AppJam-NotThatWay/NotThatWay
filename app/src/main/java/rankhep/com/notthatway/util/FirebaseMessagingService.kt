@@ -22,7 +22,7 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
 
 //        sendPushNotification(remoteMessage!!.data["message"]!!)
-        sendPushNotification("asdf")
+        sendPushNotification("위험지역에 들어갔습니다")
     }
 
     private fun sendPushNotification(message: String) {
@@ -35,11 +35,12 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("Push Title ")
+                .setContentTitle("위험지역에 입장하셨습니다")
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri).setLights(173, 500, 2000)
                 .setContentIntent(pendingIntent)
+
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
